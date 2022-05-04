@@ -41,7 +41,7 @@
 
 **Front end image**
 <div align="center">
-	<img src="/images/bingo-example.png" />
+	<img src="https://github.com/AntonHellbe/SPFX-Bingo/blob/main/images/bingo-example.PNG" />
 </div>
 
 ## Known Issues
