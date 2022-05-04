@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2020/02/ProvisioningSchema">
+  <pnp:Preferences Generator="PnP.Framework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null" />
+  <pnp:Templates ID="CONTAINER-TEMPLATE-8BC9FD1C10214A0A80D86BC27970B3F8">
+    <pnp:ProvisioningTemplate ID="TEMPLATE-8BC9FD1C10214A0A80D86BC27970B3F8" Version="1" BaseSiteTemplate="SITEPAGEPUBLISHING#0" Scope="RootSite">
+      <pnp:Lists>
+        <pnp:ListInstance Title="UserList" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/UserList" EnableVersioning="true" MinorVersionLimit="0" MaxVersionLimit="50" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/UserList/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/UserList/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/UserList/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{C2129CAF-22DD-43B6-93F9-43640786BAD7}" MobileView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/UserList/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+            <View Name="{EBA870CB-114C-4D11-9D7A-BBB6239E8A0E}" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="Alla objekt" Url="{site}/Lists/UserList/AllItems1.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query />
+              <ViewFields>
+                <FieldRef Name="UserId" />
+                <FieldRef Name="BingoTiles" />
+                <FieldRef Name="_x0031_" />
+                <FieldRef Name="_x0032_" />
+                <FieldRef Name="_x0033_" />
+                <FieldRef Name="_x0034_" />
+                <FieldRef Name="_x0035_" />
+                <FieldRef Name="_x0036_" />
+                <FieldRef Name="_x0037_" />
+                <FieldRef Name="_x0038_" />
+                <FieldRef Name="_x0039_" />
+                <FieldRef Name="_x0031_0" />
+                <FieldRef Name="_x0031_1" />
+                <FieldRef Name="_x0031_2" />
+                <FieldRef Name="_x0031_3" />
+                <FieldRef Name="_x0031_4" />
+                <FieldRef Name="_x0031_5" />
+                <FieldRef Name="_x0031_6" />
+                <FieldRef Name="_x0031_7" />
+                <FieldRef Name="_x0031_8" />
+                <FieldRef Name="_x0031_9" />
+                <FieldRef Name="_x0032_0" />
+                <FieldRef Name="_x0032_1" />
+                <FieldRef Name="_x0032_2" />
+                <FieldRef Name="_x0032_3" />
+                <FieldRef Name="_x0032_4" />
+                <FieldRef Name="_x0032_5" />
+                <FieldRef Name="TilesCompleted" />
+                <FieldRef Name="RowsCompleted" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="Off" />
+              <JSLink>clienttemplates.js</JSLink>
+              <CustomFormatter />
+              <ViewData />
+            </View>
+            <View Name="{4E16E838-D830-4991-AD76-6EFB4D9FCD87}" DefaultView="TRUE" Type="HTML" DisplayName="Admin" Url="{site}/Lists/UserList/Admin.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="Created" Ascending="FALSE" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="UserId" />
+                <FieldRef Name="RowsCompleted" />
+                <FieldRef Name="Modified" />
+                <FieldRef Name="Created" />
+                <FieldRef Name="Editor" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <Aggregations Value="On">
+                <FieldRef Name="UserId" Type="COUNT" />
+              </Aggregations>
+              <JSLink>clienttemplates.js</JSLink>
+              <ViewType2>COMPACTLIST</ViewType2>
+              <ColumnWidth>
+                <FieldRef Name="RowsCompleted" width="391" />
+                <FieldRef Name="UserId" width="219" />
+              </ColumnWidth>
+              <ViewData />
+            </View>
+          </pnp:Views>
+          <pnp:Fields>
+            <Field DisplayName="UserId" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="UserId" Title="UserId" Type="Text" ID="{1e963517-1d6c-475d-82c2-9ca790c47fde}" SourceID="{{listid:UserList}}" StaticName="UserId" ColName="nvarchar4" RowOrdinal="0" />
+            <Field AppendOnly="FALSE" DisplayName="BingoTiles" Format="Dropdown" IsModern="TRUE" IsolateStyles="FALSE" Name="BingoTiles" RichText="FALSE" RichTextMode="Compatible" Title="BingoTiles" Type="Note" ID="{a1a7e62c-4d8d-4a3b-9f34-323322011a68}" SourceID="{{listid:UserList}}" StaticName="BingoTiles" ColName="ntext2" RowOrdinal="0" />
+            <Field DisplayName="1" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_" Title="1" Type="Text" ID="{abf1d9c9-df62-429e-9cb1-ca31eb166d88}" SourceID="{{listid:UserList}}" StaticName="_x0031_" ColName="nvarchar5" RowOrdinal="0" />
+            <Field DisplayName="2" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_" Title="2" Type="Text" ID="{92956064-eb61-4aae-be9d-ea65d84ee8c8}" SourceID="{{listid:UserList}}" StaticName="_x0032_" ColName="nvarchar6" RowOrdinal="0" />
+            <Field DisplayName="3" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0033_" Title="3" Type="Text" ID="{740c7736-0b75-4d44-a2f9-fb199311b06f}" SourceID="{{listid:UserList}}" StaticName="_x0033_" ColName="nvarchar7" RowOrdinal="0" />
+            <Field DisplayName="4" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0034_" Title="4" Type="Text" ID="{f846780e-21a5-4e35-af79-4ec9a48d89ff}" SourceID="{{listid:UserList}}" StaticName="_x0034_" ColName="nvarchar8" RowOrdinal="0" />
+            <Field DisplayName="5" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0035_" Title="5" Type="Text" ID="{24595daa-207d-4c88-be6c-2a3dcf188f43}" SourceID="{{listid:UserList}}" StaticName="_x0035_" ColName="nvarchar9" RowOrdinal="0" />
+            <Field DisplayName="6" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0036_" Title="6" Type="Text" ID="{e91733af-44ae-47b0-95e3-1de617ec2f08}" SourceID="{{listid:UserList}}" StaticName="_x0036_" ColName="nvarchar10" RowOrdinal="0" />
+            <Field DisplayName="7" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0037_" Title="7" Type="Text" ID="{438f5fe0-edf4-4f56-b743-a0a92086a4e4}" SourceID="{{listid:UserList}}" StaticName="_x0037_" ColName="nvarchar11" RowOrdinal="0" />
+            <Field DisplayName="8" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0038_" Title="8" Type="Text" ID="{ba647e41-1c10-4926-bb16-cdf9e68822e4}" SourceID="{{listid:UserList}}" StaticName="_x0038_" ColName="nvarchar12" RowOrdinal="0" />
+            <Field DisplayName="9" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0039_" Title="9" Type="Text" ID="{5dcb85c4-4d3b-4c1d-bb0f-596baa3ebf0b}" SourceID="{{listid:UserList}}" StaticName="_x0039_" ColName="nvarchar13" RowOrdinal="0" />
+            <Field DisplayName="10" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_0" Title="10" Type="Text" ID="{e5d41340-9d2e-43c3-b255-912644dd2c81}" SourceID="{{listid:UserList}}" StaticName="_x0031_0" ColName="nvarchar14" RowOrdinal="0" />
+            <Field DisplayName="11" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_1" Title="11" Type="Text" ID="{7faf8961-cfb8-45b0-ad59-5833b4807249}" SourceID="{{listid:UserList}}" StaticName="_x0031_1" ColName="nvarchar15" RowOrdinal="0" />
+            <Field DisplayName="12" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_2" Title="12" Type="Text" ID="{617accd0-c619-4cac-9ce4-b5b2d5e63e27}" SourceID="{{listid:UserList}}" StaticName="_x0031_2" ColName="nvarchar16" RowOrdinal="0" />
+            <Field DisplayName="13" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_3" Title="13" Type="Text" ID="{24d74ee6-8ed2-4150-959c-7ad8366ba26c}" SourceID="{{listid:UserList}}" StaticName="_x0031_3" ColName="nvarchar17" RowOrdinal="0" />
+            <Field DisplayName="14" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_4" Title="14" Type="Text" ID="{cfe5e90f-5c26-4a3b-a46f-2a08fee42efd}" SourceID="{{listid:UserList}}" StaticName="_x0031_4" ColName="nvarchar18" RowOrdinal="0" />
+            <Field DisplayName="15" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_5" Title="15" Type="Text" ID="{0a4291d7-bb47-4925-abf4-b13d050054ae}" SourceID="{{listid:UserList}}" StaticName="_x0031_5" ColName="nvarchar19" RowOrdinal="0" />
+            <Field DisplayName="16" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_6" Title="16" Type="Text" ID="{509c1994-f902-464d-ada0-f1dda34ad8c8}" SourceID="{{listid:UserList}}" StaticName="_x0031_6" ColName="nvarchar20" RowOrdinal="0" />
+            <Field DisplayName="17" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_7" Title="17" Type="Text" ID="{e3429cc2-3797-4663-86e9-bf0bdc07881e}" SourceID="{{listid:UserList}}" StaticName="_x0031_7" ColName="nvarchar21" RowOrdinal="0" />
+            <Field DisplayName="18" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_8" Title="18" Type="Text" ID="{55856fac-f09a-4ce9-b6da-be7567009683}" SourceID="{{listid:UserList}}" StaticName="_x0031_8" ColName="nvarchar22" RowOrdinal="0" />
+            <Field DisplayName="19" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0031_9" Title="19" Type="Text" ID="{5f857f78-f3b6-4be2-8b2d-57b6f0dd9793}" SourceID="{{listid:UserList}}" StaticName="_x0031_9" ColName="nvarchar23" RowOrdinal="0" />
+            <Field DisplayName="20" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_0" Title="20" Type="Text" ID="{c67ce3f6-1d6e-4e8f-b9b4-97c947d9ba4a}" SourceID="{{listid:UserList}}" StaticName="_x0032_0" ColName="nvarchar24" RowOrdinal="0" />
+            <Field DisplayName="21" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_1" Title="21" Type="Text" ID="{d4a5048b-8585-414a-82a3-c688b3977baf}" SourceID="{{listid:UserList}}" StaticName="_x0032_1" ColName="nvarchar25" RowOrdinal="0" />
+            <Field DisplayName="22" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_2" Title="22" Type="Text" ID="{3f3ef8bb-58c3-4ac5-96a8-06ae4dd84a10}" SourceID="{{listid:UserList}}" StaticName="_x0032_2" ColName="nvarchar26" RowOrdinal="0" />
+            <Field DisplayName="23" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_3" Title="23" Type="Text" ID="{813497a7-eecf-4fd1-ab70-5ba1248af06b}" SourceID="{{listid:UserList}}" StaticName="_x0032_3" ColName="nvarchar27" RowOrdinal="0" />
+            <Field DisplayName="24" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_4" Title="24" Type="Text" ID="{2c16c376-2a67-4588-8ca3-571937d7307a}" SourceID="{{listid:UserList}}" StaticName="_x0032_4" ColName="nvarchar28" RowOrdinal="0" />
+            <Field DisplayName="25" Format="Dropdown" IsModern="TRUE" MaxLength="255" Name="_x0032_5" Title="25" Type="Text" ID="{2921b437-19c0-4619-9126-d429b01f1c6e}" SourceID="{{listid:UserList}}" StaticName="_x0032_5" ColName="nvarchar29" RowOrdinal="0" />
+            <Field AppendOnly="FALSE" DisplayName="TilesCompleted" Format="Dropdown" IsModern="TRUE" IsolateStyles="FALSE" Name="TilesCompleted" RichText="FALSE" RichTextMode="Compatible" Title="TilesCompleted" Type="Note" ID="{6a8f300a-f3f9-4af0-a8b7-19e5291cceb9}" SourceID="{{listid:UserList}}" StaticName="TilesCompleted" ColName="ntext3" RowOrdinal="0" />
+            <Field CustomFormatter="{&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;flex-wrap&quot;:&quot;wrap&quot;,&quot;display&quot;:&quot;flex&quot;},&quot;children&quot;:[{&quot;forEach&quot;:&quot;__INTERNAL__ in @currentField&quot;,&quot;elmType&quot;:&quot;div&quot;,&quot;style&quot;:{&quot;box-sizing&quot;:&quot;border-box&quot;,&quot;padding&quot;:&quot;4px 8px 5px 8px&quot;,&quot;display&quot;:&quot;flex&quot;,&quot;border-radius&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;24px&quot;,&quot;align-items&quot;:&quot;center&quot;,&quot;white-space&quot;:&quot;nowrap&quot;,&quot;overflow&quot;:&quot;hidden&quot;,&quot;margin&quot;:&quot;4px 4px 4px 4px&quot;},&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 1&quot;]},&quot;sp-css-backgroundColor-blueBackground37&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 2&quot;]},&quot;sp-css-backgroundColor-successBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 3&quot;]},&quot;sp-css-backgroundColor-warningBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 4&quot;]},&quot;sp-css-backgroundColor-blockingBackground50&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 5&quot;]},&quot;sp-css-backgroundColor-errorBackground50&quot;,&quot;sp-field-borderAllRegular sp-field-borderAllSolid sp-css-borderColor-neutralSecondary&quot;]}]}]}]}]}},&quot;children&quot;:[{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;line-height&quot;:&quot;16px&quot;,&quot;height&quot;:&quot;14px&quot;},&quot;attributes&quot;:{&quot;iconName&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 1&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 2&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 3&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 4&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 5&quot;]},&quot;&quot;,&quot;&quot;]}]}]}]}]}}},{&quot;elmType&quot;:&quot;span&quot;,&quot;style&quot;:{&quot;overflow&quot;:&quot;hidden&quot;,&quot;text-overflow&quot;:&quot;ellipsis&quot;,&quot;padding&quot;:&quot;0 3px&quot;},&quot;txtContent&quot;:&quot;[$__INTERNAL__]&quot;,&quot;attributes&quot;:{&quot;class&quot;:{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 1&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 2&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 3&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 4&quot;]},&quot;&quot;,{&quot;operator&quot;:&quot;:&quot;,&quot;operands&quot;:[{&quot;operator&quot;:&quot;==&quot;,&quot;operands&quot;:[&quot;[$__INTERNAL__]&quot;,&quot;Rad 5&quot;]},&quot;&quot;,&quot;&quot;]}]}]}]}]}}}]}],&quot;templateId&quot;:&quot;BgColorChoicePill&quot;}" DisplayName="RowsCompleted" FillInChoice="FALSE" Format="Dropdown" IsModern="TRUE" Name="RowsCompleted" Title="RowsCompleted" Type="MultiChoice" ID="{5efa79bf-3d3e-4536-938f-4ded5d28f265}" SourceID="{{listid:UserList}}" StaticName="RowsCompleted" ColName="ntext4" RowOrdinal="0">
+              <CHOICES>
+                <CHOICE>Rad 1</CHOICE>
+                <CHOICE>Rad 2</CHOICE>
+                <CHOICE>Rad 3</CHOICE>
+                <CHOICE>Rad 4</CHOICE>
+                <CHOICE>Rad 5</CHOICE>
+              </CHOICES>
+            </Field>
+          </pnp:Fields>
+          <pnp:Security>
+            <pnp:BreakRoleInheritance CopyRoleAssignments="false" ClearSubscopes="false">
+              <pnp:RoleAssignment Principal="{associatedownergroupid}" RoleDefinition="Full Control" />
+              <pnp:RoleAssignment Principal="{associatedvisitorgroupid}" RoleDefinition="Read" />
+              <pnp:RoleAssignment Principal="{associatedmembergroupid}" RoleDefinition="Edit" />
+              <pnp:RoleAssignment Principal="i:0#.f|membership|joshua.popoola@skanska.se" RoleDefinition="Edit" />
+              <pnp:RoleAssignment Principal="c:0o.c|federateddirectoryclaimprovider|c00e34b5-b432-48b7-b921-986b0e3223c5" RoleDefinition="Edit" />
+              <pnp:RoleAssignment Principal="c:0t.c|tenant|8b251e16-913e-4bf8-a6e4-d0c47c31fc08" RoleDefinition="Edit" />
+            </pnp:BreakRoleInheritance>
+          </pnp:Security>
+          <pnp:Webhooks>
+            <pnp:Webhook ServerNotificationUrl="https://northeurope1.pushnp.svc.ms/notifications?token=bd3f5aa6-5956-4ac6-9321-ebe6d335507b" ExpiresInDays="1" />
+          </pnp:Webhooks>
+        </pnp:ListInstance>
+      </pnp:Lists>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>

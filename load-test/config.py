@@ -1,0 +1,4 @@
+
+config = {
+    "password": "Fabrik22!"
+}

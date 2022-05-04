@@ -1,0 +1,83 @@
+parameters:
+  name: "DeploySpfx"
+  displayName: "Deploying SPFX"
+  environment: ""
+  nodeVersion: "10.x"
+  copyFilesFrom: ""
+  vmImage: "ubuntu-latest"
+  poolName: "Azure Pipelines"
+  dependsOn: ""
+  spfxPackageName: ""
+  spAppCatalogSiteUrl: ""
+  keyVaultServiceConnection: ""
+  keyVaultName: ""
+  secretUserName: ""
+  secretUserPassword: ""
+  secretStorageAccountAccessKey: ""
+  azureCdnServiceConnection: ""
+  storageAccount: ""
+  storageContainer: ""
+  toolPath: ""
+
+jobs:
+  - deployment: ${{ parameters.name }}
+    dependsOn: ${{ parameters.dependsOn }}
+    displayName: ${{ parameters.displayName }}
+    pool:
+      name: ${{ parameters.poolName }}
+      vmImage: "${{ parameters.vmImage }}"
+    environment: "${{ parameters.environment }}"
+    variables:
+      username: ""
+      spfxpackagename: "${{ parameters.spfxPackageName }}"
+      bundledFilesDir: "$(Pipeline.Workspace)/${{ parameters.environment }}/bundledFiles"
+      webpartImagesDir: "$(Pipeline.Workspace)/${{ parameters.environment }}/images"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            # Node
+            - task: NodeTool@0
+              displayName: "Use Node ${{ parameters.nodeVersion }}"
+              inputs:
+                versionSpec: ${{ parameters.nodeVersion }}
+                checkLatest: true
+            # NPM install m365 cli
+            - task: Npm@1
+              displayName: "Install PNP m365 cli"
+              inputs:
+                command: "custom"
+                customCommand: "install -g @pnp/cli-microsoft365"
+            # Retrieve KeyVault secrets with (service connection)
+            - task: AzureKeyVault@1
+              displayName: "Get username and password from KeyVault"
+              inputs:
+                azureSubscription: "${{ parameters.keyVaultServiceConnection }}"
+                KeyVaultName: "${{ parameters.keyVaultName }}"
+                SecretsFilter: "${{ parameters.secretUserName }}, ${{ parameters.secretUserPassword }}, ${{ parameters.secretStorageAccountAccessKey }}"
+            # Upload bundled files to Azure CDN with Azure CLI
+            - task: AzureCLI@2
+              displayName: Azure CLI - Upload bundled files to Azure CDN
+              inputs:
+                azureSubscription: "${{ parameters.azureCdnServiceConnection }}"
+                scriptType: bash
+                scriptLocation: inlineScript
+                inlineScript: az storage blob upload-batch --source $(bundledFilesDir) --destination ${{ parameters.storageContainer }}${{ parameters.toolPath }} --account-name ${{ parameters.storageAccount }} --account-key $(storageAccountAccessKey)
+            # Login to m365 cli
+            - task: Bash@3
+              displayName: "Login to m365 spAppCatalogSiteUrl with user $(username)"
+              inputs:
+                targetType: "inline"
+                script: "m365 login -t password -u $(username) -p $(password)"
+            # Upload .sppkg file to tenant app catalog
+            - task: Bash@3
+              displayName: "Upload web part ${{ parameters.spfxPackageName }} to catalog"
+              inputs:
+                targetType: "inline"
+                script: 'm365 spo app add -p "$(Pipeline.Workspace)/${{ parameters.environment }}/${{ parameters.spfxPackageName }}" --overwrite'
+            # Deploy the solution
+            - task: Bash@3
+              displayName: "Deploy ${{ parameters.spfxPackageName }} web part"
+              inputs:
+                targetType: "inline"
+                script: 'm365 spo app deploy --name "${{ parameters.spfxPackageName }}" --appCatalogUrl "${{ parameters.spAppCatalogSiteUrl }}"'

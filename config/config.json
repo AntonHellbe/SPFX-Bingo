@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "bingo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/bingo/BingoWebPart.js",
+          "manifest": "./src/webparts/bingo/BingoWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "BingoWebPartStrings": "lib/webparts/bingo/loc/{locale}.js"
+  }
+}

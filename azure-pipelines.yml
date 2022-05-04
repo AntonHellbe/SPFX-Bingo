@@ -1,0 +1,65 @@
+trigger:
+  branches:
+    include:
+      - develop
+  paths:
+    exclude:
+      - README.md
+variables:
+  dev: development
+  stage: staging
+  prod: production
+stages:
+  ### Build
+  - stage: Build
+    displayName: Build SPFX web parts
+    jobs:
+      # Production
+      - template: templates/job-spfxbuild.yml
+        parameters:
+          name: "BuildProd"
+          displayName: "Build production version"
+          environment: "$(prod)"
+          nodeVersion: "8.11.0"
+      # Staging
+      - template: templates/job-spfxbuild.yml
+        parameters:
+          name: "BuildStage"
+          displayName: "Build stage version"
+          environment: "$(stage)"
+          nodeVersion: "8.11.0"
+          copyFilesFrom: "environments/$(stage)"
+          dependsOn: "BuildProd"
+      # Development / SkanskaVisTest / Integration
+      - template: templates/job-spfxbuild.yml
+        parameters:
+          name: "BuildDevelop"
+          displayName: "Build develop version"
+          environment: "$(dev)"
+          nodeVersion: "8.11.0"
+          dependsOn: "BuildStage"
+          copyFilesFrom: "environments/$(dev)"
+  ### Release
+  - stage: DeployStage
+    displayName: Deploy .sppkg file to App Catalog
+    jobs:
+      # Development / SkanskaVisTest / Integration
+      - template: templates/job-spfxdeploy.yml
+        parameters:
+          name: "BuildDev"
+          displayName: "Deploy dev version"
+          environment: "$(dev)"
+          nodeVersion: "10.19.0"
+          spfxPackageName: "dev-bingo.sppkg"
+          spAppCatalogSiteUrl: "https://skanskavistest.sharepoint.com/sites/appcatalog"
+          keyVaultServiceConnection: "SkanskaVistest - gbl-app-catalog-upload"
+          keyVaultName: "o365-app-install"
+          secretUserName: "username"
+          secretUserPassword:
+            "password"
+            # CDN parameters
+          secretStorageAccountAccessKey: "storageAccountAccessKey"
+          azureCdnServiceConnection: "SkanskaVisTest - devops-static-integ"
+          storageAccount: "imcstaticinteg"
+          storageContainer: "integ-static"
+          toolPath: "/spfx/bingo"

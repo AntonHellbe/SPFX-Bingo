@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Beta - Bingo",
+    "id": "c5b23161-93b8-424c-9934-c2c8a9585ac1",
+    "version": "1.0.0.2",
+    "includeClientSideAssets": false,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/beta-bingo.sppkg"
+  }
+}

@@ -1,0 +1,92 @@
+parameters:
+  name: "BuildSpfx"
+  displayName: "Building SPFX"
+  environment: "development"
+  nodeVersion: "10.x"
+  copyFilesFrom: ""
+  vmImage: "ubuntu-latest"
+  poolName: "Azure Pipelines"
+  dependsOn: ""
+jobs:
+  - job: ${{ parameters.name }}
+    dependsOn: ${{ parameters.dependsOn }}
+    displayName: ${{ parameters.displayName }}
+    pool:
+      name: ${{ parameters.poolName }}
+      vmImage: "${{ parameters.vmImage }}"
+    steps:
+      # Specify Node version
+      - task: NodeTool@0
+        displayName: "Use Node ${{ parameters.nodeVersion }}"
+        inputs:
+          versionSpec: ${{ parameters.nodeVersion }}
+          checkLatest: true
+      # # Caching dependencies when possible
+      # - task: CacheBeta@0
+      #   inputs:
+      #     key: $(Agent.OS) | $(Build.SourcesDirectory)/package-lock.json
+      #     path: $(Build.SourcesDirectory)/node_modules
+      #     cacheHitVar: CACHE_RESTORED
+      # Install nodejs modules with npm
+      - task: Npm@1
+        displayName: "Install packages"
+        inputs:
+          command: "install"
+          verbose: false
+        condition: ne(variables.CACHE_RESTORED, 'true')
+      # Gulp clean
+      - task: Gulp@1
+        displayName: "gulp clean"
+        inputs:
+          targets: clean
+      # Copy Files - Config files
+      - task: CopyFiles@2
+        displayName: "Copy ${{ parameters.environment }} config"
+        condition: ne('${{ parameters.copyFilesFrom }}', '')
+        inputs:
+          SourceFolder: "$(Build.SourcesDirectory)/${{ parameters.copyFilesFrom }}"
+          TargetFolder: "$(Build.SourcesDirectory)"
+          OverWrite: true
+      # #Copy Files - Webpart images
+      # - task: CopyFiles@2
+      #   displayName: "Copy webpart images to staging directory"
+      #   inputs:
+      #     Contents: "$(Build.SourcesDirectory)/sharepoint/images/**"
+      #     TargetFolder: "$(build.ArtifactStagingDirectory)/drop/images"
+      #     flattenFolders: true
+      # Bundle solution
+      - task: Gulp@1
+        displayName: "Bundle SharePoint solution"
+        inputs:
+          gulpFile: "gulpfile.js"
+          targets: "bundle"
+          arguments: "--ship"
+          enableCodeCoverage: false
+      # Copy Files - Bundled files
+      - task: CopyFiles@2
+        displayName: "Copy SharePoint package to staging directory"
+        inputs:
+          Contents: temp/deploy/**
+          TargetFolder: "$(build.ArtifactStagingDirectory)/drop/bundledFiles"
+          flattenFolders: true
+      # Package solution
+      - task: Gulp@1
+        displayName: "Package SharePoint solution"
+        inputs:
+          gulpFile: "gulpfile.js"
+          targets: "package-solution"
+          arguments: "--ship"
+          enableCodeCoverage: false
+      # Copy Package file
+      - task: CopyFiles@2
+        displayName: "Copy SharePoint package to staging directory"
+        inputs:
+          Contents: "**/*.sppkg"
+          TargetFolder: "$(build.ArtifactStagingDirectory)/drop"
+          flattenFolders: true
+      # Publish drop files
+      - task: PublishPipelineArtifact@1
+        inputs:
+          targetPath: "$(Build.ArtifactStagingDirectory)/drop"
+          artifact: "${{ parameters.environment }}"
+          publishLocation: "pipeline"

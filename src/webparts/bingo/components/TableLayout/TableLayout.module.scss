@@ -1,0 +1,92 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+
+.gridLayout {
+
+    .tableLayout {
+        width: 100%;
+        table-layout: fixed;
+        border: none;
+    
+    }
+
+    .tableRow {
+       margin-bottom: 2px; 
+    }
+    
+    .col {
+        @include ms-font-m;
+        font-family: Helvetica, sans-serif;
+        //@include ms-fontWeight-semibold;
+        vertical-align: center;
+        text-align: center;
+        width: 20%;
+        height: 120px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+
+    .colCompleted {
+        @include ms-font-m;
+        //@include ms-fontWeight-semibold;
+        font-family: Helvetica, sans-serif;
+        vertical-align: center;
+        text-align: center;
+        width: 20%;
+        height: 120px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+    .bingoTile
+    {
+        @include ms-font-xxl;
+        @include ms-fontWeight-semibold;
+        vertical-align: center;
+        text-align: center;
+        padding-top:10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 10px;
+        background: url("../../images/bingo_2.png") no-repeat center;
+
+    }
+    .col:hover {
+        background-color: #e1dfdd;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    .colCompleted:nth-child(1)
+    {
+        background: url("../../images/b_white.png") no-repeat center;
+        background-color: #c7e0f4;
+        border-radius: 7px;
+    }
+    .colCompleted:nth-child(2)
+    {
+        background: url("../../images/i_white.png") no-repeat center;
+        background-color: #c7e0f4;
+        border-radius: 7px;
+    }
+    .colCompleted:nth-child(3)
+    {
+        background: url("../../images/n_white.png") no-repeat center;
+        background-color: #c7e0f4;
+        border-radius: 7px;
+    }
+    .colCompleted:nth-child(4)
+    {
+        background: url("../../images/g_white.png") no-repeat center;
+        background-color: #c7e0f4;
+        border-radius: 7px;
+    }
+    .colCompleted:nth-child(5)
+    {
+        background: url("../../images/o_white.png") no-repeat center;
+        background-color: #c7e0f4;
+        border-radius: 7px;
+    }
+
+}
