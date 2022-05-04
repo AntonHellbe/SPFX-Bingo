@@ -41,7 +41,7 @@
 
 **Front end image**
 <div align="center">
-	<img src="/images/bingo-example.png />
+	<img src="/images/bingo-example.png" />
 </div>
 
 ## Known Issues
