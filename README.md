@@ -40,8 +40,9 @@
 * HTML Table styled using SCSS
 
 **Front end image**
-
-![BingoExample](./images/bingo-example.png)
+<div align="center">
+	<img src="/images/bingo-example.png />
+</div>
 
 ## Known Issues
 
