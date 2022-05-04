@@ -1,14 +1,8 @@
 # bingo-webpart
 
-| Role                         | Name                 |
-|------------------------------|----------------------|
-| **Service Responsible**      | Patrik Stenbäck      |
-| **First Developer Contact**  | Anton Hellbe         |
-| **Second Developer Contact** | Anatoly Mironov      |
-
 ## Summary
 
-Bingo WebPart is a WebPart built for Skanskas IT-Week 2021. It was built for a specific use case but can be tweaked easily for other use cases.
+-
 
 
 ## Used SharePoint Framework Version
@@ -47,7 +41,7 @@ Bingo WebPart is a WebPart built for Skanskas IT-Week 2021. It was built for a s
 
 **Front end image**
 
-![BingoExample](images/bingo-example.png)
+![BingoExample](./images/bingo-example.png)
 
 ## Known Issues
 
